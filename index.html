@@ -105,6 +105,55 @@
         background: var(--grid);
         border: 1px solid var(--grid);
       }
+      .project-company-stack {
+        display: grid;
+        gap: 3.5rem;
+      }
+      .project-company-group {
+        --company-accent: var(--mint);
+      }
+      .project-company-group[hidden] {
+        display: none;
+      }
+      .project-company-group[data-company="minigate"] {
+        --company-accent: var(--mint);
+      }
+      .project-company-group[data-company="personal"] {
+        --company-accent: var(--gold);
+      }
+      .project-company-group[data-company="dessert39"] {
+        --company-accent: var(--coral);
+      }
+      .project-company-group[data-company="devblock"] {
+        --company-accent: #9bb7ff;
+      }
+      .project-company-header {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr) auto;
+        align-items: end;
+        gap: 1.5rem;
+        min-height: 9rem;
+        padding: 1.75rem 2rem;
+        border-left: 8px solid var(--company-accent);
+        background: var(--forest);
+        color: #fff;
+      }
+      .project-company-index {
+        color: var(--company-accent);
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.65rem;
+        font-weight: 700;
+      }
+      .project-company-count {
+        border: 1px solid rgba(255, 255, 255, 0.28);
+        padding: 0.5rem 0.65rem;
+        color: var(--company-accent);
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.58rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        white-space: nowrap;
+      }
       .project-card {
         grid-column: span 4;
         min-width: 0;
@@ -408,6 +457,17 @@
         .project-card {
           grid-column: 1 / -1;
         }
+        .project-company-stack {
+          gap: 2.5rem;
+        }
+        .project-company-header {
+          grid-template-columns: 1fr auto;
+          min-height: 8rem;
+          padding: 1.25rem;
+        }
+        .project-company-index {
+          grid-column: 1 / -1;
+        }
       }
       @media (max-width: 520px) {
         .nav-email {
@@ -657,7 +717,6 @@
         </section>
 
         <!-- Full Project Archive sourced from the connected Notion workspace -->
-        <!-- Full Project Archive sourced from the connected Notion workspace -->
         <section id="projects" class="bg-[#F7F7F5] px-5 py-20 md:px-8 lg:px-12">
           <div class="mx-auto max-w-[1440px]">
             <div class="mb-10 grid gap-8 lg:grid-cols-12 lg:items-end">
@@ -715,7 +774,17 @@
               >
             </div>
 
-            <div class="project-grid">
+            <div class="project-company-stack">
+              <section class="project-company-group" data-company="minigate" aria-labelledby="company-minigate">
+                <div class="project-company-header">
+                  <span class="project-company-index">GROUP / 01</span>
+                  <div>
+                    <h3 id="company-minigate" class="font-display text-3xl font-bold uppercase md:text-4xl">미니게이트</h3>
+                    <p class="mt-2 text-xs font-medium text-white/60">Witti Ecosystem · Education Platform</p>
+                  </div>
+                  <span class="project-company-count">4 PROJECTS</span>
+                </div>
+                <div class="project-grid">
               <article class="project-card" data-status="operating" data-project="witti-launcher">
                 <div class="project-media bg-[#F4D35E]">
                   <div class="project-poster text-[#1A3C2B]">
@@ -810,6 +879,19 @@
                 </div>
               </article>
 
+                </div>
+              </section>
+
+              <section class="project-company-group" data-company="personal" aria-labelledby="company-personal">
+                <div class="project-company-header">
+                  <span class="project-company-index">GROUP / 02</span>
+                  <div>
+                    <h3 id="company-personal" class="font-display text-3xl font-bold uppercase md:text-4xl">개인 프로젝트</h3>
+                    <p class="mt-2 text-xs font-medium text-white/60">Planning · Development · Store Release</p>
+                  </div>
+                  <span class="project-company-count">1 PROJECT</span>
+                </div>
+                <div class="project-grid">
               <article class="project-card" data-status="archive" data-project="easyqr">
                 <div class="project-media bg-[#F4D35E]/20">
                   <img src="assets/projects/easyqr.png" alt="이지큐알 앱 프로젝트 이미지" loading="lazy" decoding="async" />
@@ -822,6 +904,19 @@
                 </div>
               </article>
 
+                </div>
+              </section>
+
+              <section class="project-company-group" data-company="dessert39" aria-labelledby="company-dessert39">
+                <div class="project-company-header">
+                  <span class="project-company-index">GROUP / 03</span>
+                  <div>
+                    <h3 id="company-dessert39" class="font-display text-3xl font-bold uppercase md:text-4xl">디저트39</h3>
+                    <p class="mt-2 text-xs font-medium text-white/60">Customer App · Owner App</p>
+                  </div>
+                  <span class="project-company-count">2 PROJECTS</span>
+                </div>
+                <div class="project-grid">
               <article class="project-card" data-status="archive" data-project="dessert39">
                 <div class="project-media bg-[#FF8C69]/10">
                   <img src="assets/projects/dessert39.jpg" alt="디저트39 사용자 앱 화면" loading="lazy" decoding="async" />
@@ -846,6 +941,19 @@
                 </div>
               </article>
 
+                </div>
+              </section>
+
+              <section class="project-company-group" data-company="devblock" aria-labelledby="company-devblock">
+                <div class="project-company-header">
+                  <span class="project-company-index">GROUP / 04</span>
+                  <div>
+                    <h3 id="company-devblock" class="font-display text-3xl font-bold uppercase md:text-4xl">데블록</h3>
+                    <p class="mt-2 text-xs font-medium text-white/60">Healthcare · Outdoor Platform</p>
+                  </div>
+                  <span class="project-company-count">3 PROJECTS</span>
+                </div>
+                <div class="project-grid">
               <article class="project-card" data-status="archive" data-project="onnuri">
                 <div class="project-media">
                   <img src="assets/projects/onnuri.jpg" alt="온누리 약 복용기록 앱 화면" loading="lazy" decoding="async" />
@@ -881,7 +989,8 @@
                   <div class="mt-auto flex flex-wrap gap-2 pt-6"><span class="project-tag">Android</span><span class="project-tag">Kotlin</span><span class="project-tag">MVVM</span><span class="project-tag">LiveData</span></div>
                 </div>
               </article>
-
+                </div>
+              </section>
             </div>
           </div>
         </section>
@@ -1044,6 +1153,7 @@
     <script>
       const projectFilters = document.querySelectorAll(".project-filter");
       const projectCards = document.querySelectorAll(".project-card");
+      const projectCompanyGroups = document.querySelectorAll(".project-company-group");
       const projectCount = document.querySelector("#project-count");
 
       projectFilters.forEach((button) => {
@@ -1059,6 +1169,13 @@
             const isVisible = filter === "all" || card.dataset.status === filter;
             card.hidden = !isVisible;
             if (isVisible) visibleCount += 1;
+          });
+
+          projectCompanyGroups.forEach((group) => {
+            const hasVisibleProject = [...group.querySelectorAll(".project-card")].some(
+              (card) => !card.hidden,
+            );
+            group.hidden = !hasVisibleProject;
           });
 
           projectCount.textContent = `${visibleCount} PROJECTS`;
