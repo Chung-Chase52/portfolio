@@ -1,0 +1,4 @@
+.DS_Store
+.superdesign/
+node_modules/
+dist/
