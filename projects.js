@@ -96,6 +96,32 @@ const projectDetails = {
     poster: { color: "#9EFFBF", icon: "lucide:sparkles", label: "AI-NATIVE BUILD" },
     images: [],
   },
+  "shake-mobile": {
+    title: "쉐이크모바일",
+    eyebrow: "MINIGATE · AI-ASSISTED FULL REFACTOR",
+    period: "2025.01 — 2025.09",
+    role: "Android 전면 리팩터링",
+    team: "미니게이트",
+    status: "리팩터링 완료",
+    aiStage: "AI 전면 리팩터링",
+    summary:
+      "기존 Android 앱의 기능을 유지하면서 UI, 상태 관리, 네트워크와 빌드 체계를 AI와 함께 현대화한 전면 리팩터링 프로젝트입니다.",
+    tech: ["Kotlin", "Compose", "ViewModel", "Ktor", "Kotlin DSL", "Version Catalog", "WebView", "API 35"],
+    tasks: [
+      "기존 Activity 중심 화면을 Jetpack Compose와 MainViewModel·MainUiState 구조로 전환했습니다.",
+      "서버 통신을 KtorClient와 safeApiCall 기반으로 재구성하고 인증 요청 모델을 분리했습니다.",
+      "Groovy 빌드 스크립트를 Kotlin DSL과 Version Catalog로 마이그레이션했습니다.",
+      "루팅 탐지 로직을 인터페이스와 구현체로 분리하고 앱 진입 단계의 보안 검사를 정리했습니다.",
+      "WebView 카메라·갤러리·파일 다운로드 흐름과 JavaScript Bridge를 Compose 환경에 맞게 개선했습니다.",
+      "Android API 35 대응과 BuildConfig 환경 분리를 진행했습니다.",
+    ],
+    outcomes: [
+      "2025년 1월부터 9월까지 18개 커밋으로 전면 리팩터링을 진행했습니다.",
+      "리팩터링 이전 기준 대비 62개 파일에서 2,919줄을 추가하고 888줄을 제거하며 앱 기반 구조를 전환했습니다.",
+      "AI를 구현·구조화·검토 과정 전반에 활용하되, 커밋 기반 AI 사용률을 임의로 계산하지 않고 실제 변경 범위로 결과를 검증했습니다.",
+    ],
+    images: ["assets/projects/shake-mobile.png"],
+  },
   easyqr: {
     title: "이지큐알",
     eyebrow: "PERSONAL · QR UTILITY",

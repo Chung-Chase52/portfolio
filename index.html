@@ -190,6 +190,11 @@
         background: var(--forest);
         color: #fff;
       }
+      .ai-stage-refactor {
+        border-color: var(--forest);
+        background: var(--forest);
+        color: #fff;
+      }
       .project-card {
         grid-column: span 4;
         min-width: 0;
@@ -200,6 +205,37 @@
         transition:
           transform 180ms ease,
           box-shadow 180ms ease;
+      }
+      .project-card-featured {
+        grid-column: span 8;
+        display: grid;
+        grid-template-columns: minmax(16rem, 0.78fr) minmax(0, 1.22fr);
+      }
+      .project-card-featured .project-media {
+        height: 100%;
+        min-height: 24rem;
+        aspect-ratio: auto;
+        border-right: 1px solid var(--grid);
+        border-bottom: 0;
+      }
+      .project-card-featured .project-media img {
+        padding: 2.5rem;
+        object-position: center;
+      }
+      .project-card-featured .project-body {
+        min-height: 24rem;
+      }
+      .refactor-proof-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 1px;
+        margin-top: 1.5rem;
+        border: 1px solid rgba(26, 60, 43, 0.16);
+        background: rgba(26, 60, 43, 0.16);
+      }
+      .refactor-proof {
+        background: var(--paper);
+        padding: 0.75rem;
       }
       .project-card:hover {
         position: relative;
@@ -453,6 +489,29 @@
         border: 1px dashed rgba(158, 255, 191, 0.35);
         border-radius: 50%;
       }
+      .loop-signal-track {
+        position: absolute;
+        inset: 10%;
+        z-index: 1;
+        pointer-events: none;
+        animation: loop-signal-orbit 10s linear infinite;
+      }
+      .loop-signal {
+        position: absolute;
+        top: -0.3rem;
+        left: calc(50% - 0.3rem);
+        width: 0.6rem;
+        height: 0.6rem;
+        border: 2px solid var(--forest);
+        border-radius: 50%;
+        background: var(--mint);
+        box-shadow: 0 0 0 4px rgba(158, 255, 191, 0.18);
+      }
+      @keyframes loop-signal-orbit {
+        to {
+          transform: rotate(360deg);
+        }
+      }
       .loop-axis {
         position: absolute;
         z-index: 0;
@@ -478,6 +537,25 @@
         background: var(--forest);
         padding: 0.75rem;
         text-align: center;
+        outline: 1px solid transparent;
+        outline-offset: 3px;
+        opacity: 0.82;
+        animation: loop-node-focus 10s steps(1, end) infinite;
+      }
+      @keyframes loop-node-focus {
+        0%,
+        18% {
+          border-color: var(--mint);
+          outline: 1px solid var(--mint);
+          outline-offset: 3px;
+          opacity: 1;
+        }
+        19%,
+        100% {
+          border-color: rgba(255, 255, 255, 0.24);
+          outline-color: transparent;
+          opacity: 0.82;
+        }
       }
       .loop-node-context {
         top: 0;
@@ -488,16 +566,19 @@
         top: 50%;
         right: 0;
         transform: translateY(-50%);
+        animation-delay: 2.5s;
       }
       .loop-node-verify {
-        top: 50%;
-        left: 0;
-        transform: translateY(-50%);
-      }
-      .loop-node-ship {
         bottom: 0;
         left: 50%;
         transform: translateX(-50%);
+        animation-delay: 5s;
+      }
+      .loop-node-ship {
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        animation-delay: 7.5s;
       }
       .human-gate {
         position: absolute;
@@ -513,6 +594,19 @@
         background: var(--forest);
         color: white;
         text-align: center;
+        animation: human-gate-confirm 10s ease-in-out infinite;
+      }
+      @keyframes human-gate-confirm {
+        0%,
+        88%,
+        100% {
+          border-color: var(--mint);
+          transform: translate(-50%, -50%) scale(1);
+        }
+        93% {
+          border-color: white;
+          transform: translate(-50%, -50%) scale(1.045);
+        }
       }
       .human-gate::before,
       .human-gate::after {
@@ -570,6 +664,19 @@
         border: 1px dashed var(--coral);
         background: rgba(255, 140, 105, 0.06);
       }
+      .will-reveal {
+        opacity: 0;
+        transform: translateY(0.7rem);
+      }
+      .will-reveal.is-visible {
+        animation: content-reveal 520ms ease-out var(--reveal-delay, 0ms) both;
+      }
+      @keyframes content-reveal {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
       .accent-border-gold {
         border-top: 4px solid var(--gold);
       }
@@ -604,6 +711,9 @@
         }
         .project-card {
           grid-column: span 6;
+        }
+        .project-card-featured {
+          grid-column: 1 / -1;
         }
         .project-detail-hero,
         .project-detail-grid {
@@ -649,6 +759,21 @@
           grid-column: 1 / -1;
           min-height: auto;
         }
+        .project-card-featured {
+          display: flex;
+        }
+        .project-card-featured .project-media {
+          min-height: 15rem;
+          aspect-ratio: 16 / 10;
+          border-right: 0;
+          border-bottom: 1px solid var(--grid);
+        }
+        .project-card-featured .project-body {
+          min-height: 0;
+        }
+        .refactor-proof-grid {
+          grid-template-columns: 1fr 1fr;
+        }
         .project-card {
           grid-column: 1 / -1;
         }
@@ -674,7 +799,16 @@
           scroll-behavior: auto;
         }
         .hero-status-dot,
+        .loop-signal-track,
+        .loop-node,
+        .human-gate,
         .animate-pulse {
+          animation: none !important;
+        }
+        .will-reveal,
+        .will-reveal.is-visible {
+          opacity: 1 !important;
+          transform: none !important;
           animation: none !important;
         }
         *,
@@ -822,6 +956,7 @@
             </div>
 
             <div class="delivery-loop mt-14" role="img" aria-label="Context, Build, Verify, Ship을 Human Gate가 연결하는 AI 개발 루프">
+              <span class="loop-signal-track" aria-hidden="true"><span class="loop-signal"></span></span>
               <span class="loop-axis loop-axis-x" aria-hidden="true"></span>
               <span class="loop-axis loop-axis-y" aria-hidden="true"></span>
               <div class="loop-node loop-node-context">
@@ -854,7 +989,7 @@
             </div>
           </div>
 
-          <article class="col-span-12 lg:col-span-4 mosaic-card bg-white">
+          <article class="col-span-12 lg:col-span-4 mosaic-card bg-white" data-reveal data-reveal-delay="0">
             <p class="mb-5 font-mono text-[9px] font-bold uppercase tracking-[0.18em] opacity-45">Adopted / 2025</p>
             <div class="flex items-start gap-4">
               <span class="hero-proof-icon bg-[#9EFFBF]" aria-hidden="true"><iconify-icon icon="lucide:file-code-2" class="text-xl"></iconify-icon></span>
@@ -864,7 +999,7 @@
               </div>
             </div>
           </article>
-          <article class="col-span-12 lg:col-span-4 mosaic-card bg-white">
+          <article class="col-span-12 lg:col-span-4 mosaic-card bg-white" data-reveal data-reveal-delay="90">
             <p class="mb-5 font-mono text-[9px] font-bold uppercase tracking-[0.18em] opacity-45">Operating / Now</p>
             <div class="flex items-start gap-4">
               <span class="hero-proof-icon bg-[#F4D35E]" aria-hidden="true"><iconify-icon icon="lucide:workflow" class="text-xl"></iconify-icon></span>
@@ -874,7 +1009,7 @@
               </div>
             </div>
           </article>
-          <article class="col-span-12 lg:col-span-4 mosaic-card bg-white">
+          <article class="col-span-12 lg:col-span-4 mosaic-card bg-white" data-reveal data-reveal-delay="180">
             <p class="mb-5 font-mono text-[9px] font-bold uppercase tracking-[0.18em] text-[#FF8C69]">Next / Roadmap</p>
             <div class="flex items-start gap-4">
               <span class="hero-proof-icon border border-[#FF8C69] text-[#FF8C69]" aria-hidden="true"><iconify-icon icon="lucide:radar" class="text-xl"></iconify-icon></span>
@@ -1007,7 +1142,7 @@
                 </span>
               </div>
               <ol class="ai-pipeline">
-                <li class="ai-pipeline-step">
+                <li class="ai-pipeline-step" data-reveal data-reveal-delay="0">
                   <div class="flex items-center justify-between">
                     <span class="font-mono text-[9px] font-bold text-white/35">01</span>
                     <iconify-icon icon="lucide:scan-search" class="text-xl text-[#9EFFBF]"></iconify-icon>
@@ -1020,7 +1155,7 @@
                     <span class="ai-tool-tag">Repo Rules</span>
                   </div>
                 </li>
-                <li class="ai-pipeline-step">
+                <li class="ai-pipeline-step" data-reveal data-reveal-delay="70">
                   <div class="flex items-center justify-between">
                     <span class="font-mono text-[9px] font-bold text-white/35">02</span>
                     <iconify-icon icon="lucide:panels-top-left" class="text-xl text-[#F4D35E]"></iconify-icon>
@@ -1033,7 +1168,7 @@
                     <span class="ai-tool-tag">Mobile Design</span>
                   </div>
                 </li>
-                <li class="ai-pipeline-step">
+                <li class="ai-pipeline-step" data-reveal data-reveal-delay="140">
                   <div class="flex items-center justify-between">
                     <span class="font-mono text-[9px] font-bold text-white/35">03</span>
                     <iconify-icon icon="lucide:terminal-square" class="text-xl text-[#FF8C69]"></iconify-icon>
@@ -1046,7 +1181,7 @@
                     <span class="ai-tool-tag">Android Skill</span>
                   </div>
                 </li>
-                <li class="ai-pipeline-step">
+                <li class="ai-pipeline-step" data-reveal data-reveal-delay="210">
                   <div class="flex items-center justify-between">
                     <span class="font-mono text-[9px] font-bold text-white/35">04</span>
                     <iconify-icon icon="lucide:shield-check" class="text-xl text-[#9EFFBF]"></iconify-icon>
@@ -1059,7 +1194,7 @@
                     <span class="ai-tool-tag">Agent Check</span>
                   </div>
                 </li>
-                <li class="ai-pipeline-step">
+                <li class="ai-pipeline-step" data-reveal data-reveal-delay="280">
                   <div class="flex items-center justify-between">
                     <span class="font-mono text-[9px] font-bold text-white/35">05</span>
                     <iconify-icon icon="lucide:package-check" class="text-xl text-[#F4D35E]"></iconify-icon>
@@ -1147,7 +1282,7 @@
                 <h2
                   class="font-display text-4xl font-bold uppercase leading-[0.95] tracking-tight md:text-6xl"
                 >
-                  출시하고 운영한<br />10개의 프로젝트
+                  개발하고 운영한<br />11개의 프로젝트
                 </h2>
               </div>
               <div class="lg:col-span-4 lg:text-right">
@@ -1168,7 +1303,7 @@
                   data-filter="all"
                   aria-pressed="true"
                 >
-                  전체 10
+                  전체 11
                 </button>
                 <button
                   type="button"
@@ -1184,11 +1319,11 @@
                   data-filter="archive"
                   aria-pressed="false"
                 >
-                  완료 6
+                  완료 7
                 </button>
               </div>
               <span id="project-count" class="font-mono text-[10px] font-bold opacity-50" aria-live="polite"
-                >10 PROJECTS</span
+                >11 PROJECTS</span
               >
             </div>
 
@@ -1198,10 +1333,10 @@
                   <span class="project-company-index">GROUP / 01</span>
                   <div>
                     <h3 id="company-minigate" class="font-display text-3xl font-bold uppercase md:text-4xl">미니게이트</h3>
-                    <p class="mt-2 text-xs font-medium text-white/60">Witti Ecosystem · Education Platform</p>
+                    <p class="mt-2 text-xs font-medium text-white/60">Witti Ecosystem · Education Platform · Mobile Refactor</p>
                     <span class="ai-era-badge">AI-Enabled Era · 2025—Now</span>
                   </div>
-                  <span class="project-company-count">4 PROJECTS</span>
+                  <span class="project-company-count">5 PROJECTS</span>
                 </div>
                 <div class="project-grid">
               <article class="project-card" data-status="operating" data-project="witti-launcher">
@@ -1294,6 +1429,48 @@
                   </p>
                   <div class="mt-auto flex flex-wrap gap-2 pt-6">
                     <span class="project-tag">Compose</span><span class="project-tag">Hilt</span><span class="project-tag">Ktor</span><span class="project-tag">Media3</span>
+                  </div>
+                </div>
+              </article>
+
+              <article class="project-card project-card-featured" data-status="archive" data-project="shake-mobile">
+                <div class="project-media bg-[#F7F7F5]">
+                  <img
+                    src="assets/projects/shake-mobile.png"
+                    alt="쉐이크모바일 로고"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <div class="project-body">
+                  <div class="mb-4 flex flex-wrap items-center justify-between gap-3">
+                    <span class="font-mono text-[9px] font-bold uppercase opacity-50">2025.01 — 2025.09</span>
+                    <span class="ai-stage ai-stage-refactor">AI 전면 리팩터링</span>
+                  </div>
+                  <h3 class="font-display text-3xl font-bold">쉐이크모바일</h3>
+                  <p class="mt-3 text-sm font-medium leading-relaxed text-gray-600">
+                    기존 Android 앱을 AI와 함께 Compose·Ktor 중심 구조로 전면 현대화한 리팩터링 사례입니다.
+                  </p>
+                  <div class="refactor-proof-grid" role="group" aria-label="쉐이크모바일 리팩터링 변경 규모">
+                    <div class="refactor-proof">
+                      <p class="font-display text-xl font-bold">18</p>
+                      <p class="mt-1 font-mono text-[7px] font-bold uppercase opacity-45">Commits</p>
+                    </div>
+                    <div class="refactor-proof">
+                      <p class="font-display text-xl font-bold">62</p>
+                      <p class="mt-1 font-mono text-[7px] font-bold uppercase opacity-45">Files</p>
+                    </div>
+                    <div class="refactor-proof">
+                      <p class="font-display text-xl font-bold">+2,919</p>
+                      <p class="mt-1 font-mono text-[7px] font-bold uppercase opacity-45">Added</p>
+                    </div>
+                    <div class="refactor-proof">
+                      <p class="font-display text-xl font-bold">−888</p>
+                      <p class="mt-1 font-mono text-[7px] font-bold uppercase opacity-45">Removed</p>
+                    </div>
+                  </div>
+                  <div class="mt-auto flex flex-wrap gap-2 pt-6">
+                    <span class="project-tag">Compose</span><span class="project-tag">ViewModel</span><span class="project-tag">Ktor</span><span class="project-tag">Kotlin DSL</span><span class="project-tag">API 35</span>
                   </div>
                 </div>
               </article>
@@ -1599,6 +1776,28 @@
           projectCount.textContent = `${visibleCount} PROJECTS`;
         });
       });
+
+      const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const revealItems = document.querySelectorAll("[data-reveal]");
+
+      if (!prefersReducedMotion && "IntersectionObserver" in window) {
+        const revealObserver = new IntersectionObserver(
+          (entries, observer) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            });
+          },
+          { threshold: 0.16 },
+        );
+
+        revealItems.forEach((item) => {
+          item.classList.add("will-reveal");
+          item.style.setProperty("--reveal-delay", `${item.dataset.revealDelay || 0}ms`);
+          revealObserver.observe(item);
+        });
+      }
     </script>
   </body>
 </html>
