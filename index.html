@@ -154,6 +154,42 @@
         letter-spacing: 0.08em;
         white-space: nowrap;
       }
+      .ai-era-badge,
+      .ai-stage {
+        display: inline-flex;
+        align-items: center;
+        width: fit-content;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.55rem;
+        font-weight: 700;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+      }
+      .ai-era-badge {
+        margin-top: 0.8rem;
+        border: 1px solid var(--mint);
+        padding: 0.35rem 0.5rem;
+        color: var(--mint);
+      }
+      .ai-stage {
+        border: 1px solid rgba(26, 60, 43, 0.2);
+        padding: 0.3rem 0.45rem;
+        color: var(--forest);
+      }
+      .ai-stage-intro {
+        background: var(--gold);
+      }
+      .ai-stage-assist {
+        background: #ffd6ca;
+      }
+      .ai-stage-collab {
+        background: var(--mint);
+      }
+      .ai-stage-native {
+        border-color: var(--forest);
+        background: var(--forest);
+        color: #fff;
+      }
       .project-card {
         grid-column: span 4;
         min-width: 0;
@@ -781,6 +817,7 @@
                   <div>
                     <h3 id="company-minigate" class="font-display text-3xl font-bold uppercase md:text-4xl">미니게이트</h3>
                     <p class="mt-2 text-xs font-medium text-white/60">Witti Ecosystem · Education Platform</p>
+                    <span class="ai-era-badge">AI-Enabled Era · 2025—Now</span>
                   </div>
                   <span class="project-company-count">4 PROJECTS</span>
                 </div>
@@ -798,7 +835,7 @@
                 <div class="project-body">
                   <div class="mb-4 flex items-center justify-between gap-3">
                     <span class="font-mono text-[9px] font-bold uppercase opacity-50">2025.01 — NOW</span>
-                    <span class="h-2 w-2 rounded-full bg-[#1A3C2B]" title="운영 중"></span>
+                    <span class="ai-stage ai-stage-intro">AI 도입</span>
                   </div>
                   <h3 class="font-display text-2xl font-bold">Witti Launcher</h3>
                   <p class="mt-3 text-sm leading-relaxed text-gray-600">
@@ -817,7 +854,7 @@
                 <div class="project-body">
                   <div class="mb-4 flex items-center justify-between gap-3">
                     <span class="font-mono text-[9px] font-bold uppercase opacity-50">2025.07 — NOW</span>
-                    <span class="h-2 w-2 rounded-full bg-[#1A3C2B]" title="운영 중"></span>
+                    <span class="ai-stage ai-stage-assist">AI 보조</span>
                   </div>
                   <h3 class="font-display text-2xl font-bold">WittiBox</h3>
                   <p class="mt-3 text-sm leading-relaxed text-gray-600">
@@ -842,7 +879,7 @@
                 <div class="project-body">
                   <div class="mb-4 flex items-center justify-between gap-3">
                     <span class="font-mono text-[9px] font-bold uppercase opacity-50">2026.04 — NOW</span>
-                    <span class="h-2 w-2 rounded-full bg-[#1A3C2B]" title="운영 중"></span>
+                    <span class="ai-stage ai-stage-collab">AI 협업</span>
                   </div>
                   <h3 class="font-display text-2xl font-bold">Witti Parent</h3>
                   <p class="mt-3 text-sm leading-relaxed text-gray-600">
@@ -867,7 +904,7 @@
                 <div class="project-body">
                   <div class="mb-4 flex items-center justify-between gap-3">
                     <span class="font-mono text-[9px] font-bold uppercase opacity-50">2026.05 — NOW</span>
-                    <span class="h-2 w-2 rounded-full bg-[#1A3C2B]" title="운영 중"></span>
+                    <span class="ai-stage ai-stage-native">AI-Native · 58%</span>
                   </div>
                   <h3 class="font-display text-2xl font-bold">MyWitti</h3>
                   <p class="mt-3 text-sm leading-relaxed text-gray-600">
@@ -882,34 +919,9 @@
                 </div>
               </section>
 
-              <section class="project-company-group" data-company="personal" aria-labelledby="company-personal">
-                <div class="project-company-header">
-                  <span class="project-company-index">GROUP / 02</span>
-                  <div>
-                    <h3 id="company-personal" class="font-display text-3xl font-bold uppercase md:text-4xl">개인 프로젝트</h3>
-                    <p class="mt-2 text-xs font-medium text-white/60">Planning · Development · Store Release</p>
-                  </div>
-                  <span class="project-company-count">1 PROJECT</span>
-                </div>
-                <div class="project-grid">
-              <article class="project-card" data-status="archive" data-project="easyqr">
-                <div class="project-media bg-[#F4D35E]/20">
-                  <img src="assets/projects/easyqr.png" alt="이지큐알 앱 프로젝트 이미지" loading="lazy" decoding="async" />
-                </div>
-                <div class="project-body">
-                  <div class="mb-4 flex items-center justify-between gap-3"><span class="font-mono text-[9px] font-bold uppercase opacity-50">2024.11 — 2024.12</span><span class="font-mono text-[8px] font-bold uppercase opacity-40">1인 개발</span></div>
-                  <h3 class="font-display text-2xl font-bold">이지큐알</h3>
-                  <p class="mt-3 text-sm leading-relaxed text-gray-600">QR 유틸리티 앱. 기획부터 개발과 배포까지 전 과정을 혼자 완성했습니다.</p>
-                  <div class="mt-auto flex flex-wrap gap-2 pt-6"><span class="project-tag">Kotlin</span><span class="project-tag">Compose</span><span class="project-tag">Room</span><span class="project-tag">Paging</span></div>
-                </div>
-              </article>
-
-                </div>
-              </section>
-
               <section class="project-company-group" data-company="dessert39" aria-labelledby="company-dessert39">
                 <div class="project-company-header">
-                  <span class="project-company-index">GROUP / 03</span>
+                  <span class="project-company-index">GROUP / 02</span>
                   <div>
                     <h3 id="company-dessert39" class="font-display text-3xl font-bold uppercase md:text-4xl">디저트39</h3>
                     <p class="mt-2 text-xs font-medium text-white/60">Customer App · Owner App</p>
@@ -946,7 +958,7 @@
 
               <section class="project-company-group" data-company="devblock" aria-labelledby="company-devblock">
                 <div class="project-company-header">
-                  <span class="project-company-index">GROUP / 04</span>
+                  <span class="project-company-index">GROUP / 03</span>
                   <div>
                     <h3 id="company-devblock" class="font-display text-3xl font-bold uppercase md:text-4xl">데블록</h3>
                     <p class="mt-2 text-xs font-medium text-white/60">Healthcare · Outdoor Platform</p>
@@ -991,6 +1003,31 @@
               </article>
                 </div>
               </section>
+              <section class="project-company-group" data-company="personal" aria-labelledby="company-personal">
+                <div class="project-company-header">
+                  <span class="project-company-index">GROUP / 04</span>
+                  <div>
+                    <h3 id="company-personal" class="font-display text-3xl font-bold uppercase md:text-4xl">개인 프로젝트</h3>
+                    <p class="mt-2 text-xs font-medium text-white/60">Planning · Development · Store Release</p>
+                  </div>
+                  <span class="project-company-count">1 PROJECT</span>
+                </div>
+                <div class="project-grid">
+              <article class="project-card" data-status="archive" data-project="easyqr">
+                <div class="project-media bg-[#F4D35E]/20">
+                  <img src="assets/projects/easyqr.png" alt="이지큐알 앱 프로젝트 이미지" loading="lazy" decoding="async" />
+                </div>
+                <div class="project-body">
+                  <div class="mb-4 flex items-center justify-between gap-3"><span class="font-mono text-[9px] font-bold uppercase opacity-50">2024.11 — 2024.12</span><span class="font-mono text-[8px] font-bold uppercase opacity-40">1인 개발</span></div>
+                  <h3 class="font-display text-2xl font-bold">이지큐알</h3>
+                  <p class="mt-3 text-sm leading-relaxed text-gray-600">QR 유틸리티 앱. 기획부터 개발과 배포까지 전 과정을 혼자 완성했습니다.</p>
+                  <div class="mt-auto flex flex-wrap gap-2 pt-6"><span class="project-tag">Kotlin</span><span class="project-tag">Compose</span><span class="project-tag">Room</span><span class="project-tag">Paging</span></div>
+                </div>
+              </article>
+
+                </div>
+              </section>
+
             </div>
           </div>
         </section>

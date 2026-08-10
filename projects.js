@@ -6,6 +6,7 @@ const projectDetails = {
     role: "Android 개발 · 운영",
     team: "미니게이트",
     status: "운영 중",
+    aiStage: "AI 도입",
     summary:
       "유치원·어린이집·가정의 태블릿을 학습 단말로 바꿔주는 위티 생태계의 중심 런처입니다. 홈 화면을 대체해 학생별 학습 콘텐츠 실행과 단말 제어를 담당합니다.",
     tech: ["Kotlin", "Compose", "Hilt", "Ktor", "Knox", "Firebase"],
@@ -29,6 +30,7 @@ const projectDetails = {
     role: "Android 재구축 · 운영",
     team: "미니게이트",
     status: "운영 중",
+    aiStage: "AI 보조",
     summary:
       "납품이 막혀 있던 Java 레거시 프로젝트를 Kotlin과 Jetpack Compose로 전면 재구축한 유아 교육 플랫폼입니다. 기관용 B2G와 가정용 B2C를 하나의 코드베이스에서 운영합니다.",
     tech: ["Kotlin", "Compose", "Clean Architecture", "Hilt", "Ktor", "Knox", "GitLab CI/CD"],
@@ -52,6 +54,7 @@ const projectDetails = {
     role: "Android 개발 · 운영",
     team: "미니게이트",
     status: "운영 중",
+    aiStage: "AI 협업",
     summary:
       "로그인·자녀 연결·커리큘럼·학습 콘텐츠·뮤직박스를 제공하며 자녀 기기의 Witti Launcher와 함께 동작하는 학부모 앱입니다.",
     tech: ["Kotlin", "Compose", "Hilt", "Ktor", "Media3", "WebView Bridge"],
@@ -75,6 +78,7 @@ const projectDetails = {
     role: "신규 설계 · Android 개발",
     team: "미니게이트",
     status: "운영 중",
+    aiStage: "AI-Native · AI 페어 커밋 58%",
     summary:
       "기획·디자인 스펙을 화면 단위로 구조화해 AI에 핸드오프하는 방식으로 처음부터 구축한 신규 학부모 앱입니다.",
     tech: ["Kotlin", "Compose", "Hilt", "Ktor", "Media3", "Unit Test"],
@@ -297,6 +301,7 @@ function renderProjectFacts(project) {
     ["기간", project.period],
     ["담당", project.role],
     ["팀", project.team],
+    ...(project.aiStage ? [["AI 활용", project.aiStage]] : []),
     ["상태", project.status],
   ];
   projectFacts.replaceChildren();
